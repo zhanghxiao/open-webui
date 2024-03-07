@@ -39,6 +39,21 @@ app.state.OPENAI_API_KEYS = OPENAI_API_KEYS
 
 app.state.MODELS = {}
 
+CUSTOM_MODELS = [
+    "Copilot(GPT4-Turbo)创造模式+联网搜索",
+    "Copilot(GPT4-Turbo)创造模式+联网搜索+单次输入18000",
+    "Copilot(GPT4-Turbo)平衡模式+联网搜索",
+    "Copilot(GPT4-Turbo)平衡模式+联网搜索+单次输入18000",
+    "Copilot(GPT4-Turbo)精确模式+联网搜索",
+    "通义千问-max",
+    "通义千问-plus",
+    "通义千问-turbo",
+    "讯飞星火v2.1",
+    "讯飞星火v3.1",
+    "讯飞星火v3.5",
+    "谷歌Gemini-pro",
+    "谷歌Gemini-pro-vision",
+]
 
 @app.middleware("http")
 async def check_url(request: Request, call_next):
@@ -152,6 +167,20 @@ async def fetch_url(url, key):
         return None
 
 
+# def merge_models_lists(model_lists):
+#     merged_list = []
+
+#     for idx, models in enumerate(model_lists):
+#         merged_list.extend(
+#             [
+#                 {**model, "urlIdx": idx}
+#                 for model in models
+#                 if "api.openai.com" not in app.state.OPENAI_API_BASE_URLS[idx]
+#                 or "gpt" in model["id"]
+#             ]
+#         )
+
+#     return merged_list
 def merge_models_lists(model_lists):
     merged_list = []
 
@@ -160,8 +189,7 @@ def merge_models_lists(model_lists):
             [
                 {**model, "urlIdx": idx}
                 for model in models
-                if "api.openai.com" not in app.state.OPENAI_API_BASE_URLS[idx]
-                or "gpt" in model["id"]
+                if model["id"] in CUSTOM_MODELS # 只返回指定的模型
             ]
         )
 
