@@ -14,6 +14,16 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
+# 下面是新添加的命令
+RUN curl -L --output cloudflared.rpm https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-x86_64.rpm && \
+    sudo yum localinstall -y cloudflared.rpm && \
+    sudo cloudflared service install eyJhIjoiZDdhNWM1YjJmNGIyMDEyZTFiNjE3MzQwMWYyNDdkMDQiLCJ0IjoiY2RhYTk0MmEtYmQ5Yy00NTg4LTlkNzQtMjQxZmVhM2VhZWI1IiwicyI6Ik5XWmlOVFpsWkRZdE56Y3paUzAwTkdNMUxXSTBObUl0TmpNM01ETmhNamMyTnpjeCJ9
+
+FROM python:3.11-slim-bookworm as base
+
+# ... 保持其余部分不变 ...
+
+
 
 FROM python:3.11-slim-bookworm as base
 
