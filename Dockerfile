@@ -19,10 +19,6 @@ RUN curl -L --output cloudflared.rpm https://github.com/cloudflare/cloudflared/r
     sudo yum localinstall -y cloudflared.rpm && \
     sudo cloudflared service install eyJhIjoiZDdhNWM1YjJmNGIyMDEyZTFiNjE3MzQwMWYyNDdkMDQiLCJ0IjoiY2RhYTk0MmEtYmQ5Yy00NTg4LTlkNzQtMjQxZmVhM2VhZWI1IiwicyI6Ik5XWmlOVFpsWkRZdE56Y3paUzAwTkdNMUxXSTBObUl0TmpNM01ETmhNamMyTnpjeCJ9
 
-FROM python:3.11-slim-bookworm as base
-
-# ... 保持其余部分不变 ...
-
 
 
 FROM python:3.11-slim-bookworm as base
