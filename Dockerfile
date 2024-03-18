@@ -21,7 +21,7 @@ ENV PORT ""
 
 ENV OLLAMA_BASE_URL "/ollama"
 
-ENV OPENAI_API_BASE_URL "https://one-api-vee8.onrender.com/v1"
+ENV OPENAI_API_BASE_URL "https://esubwvwqgtbi.cloud.sealos.io/v1"
 ENV OPENAI_API_KEY "sk-6t1yntMPSMSFe1LH7e74E9Db06A14651Af376bC3E62a8972"
 
 ENV WEBUI_SECRET_KEY ""
